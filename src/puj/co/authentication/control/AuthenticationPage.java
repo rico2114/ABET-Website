@@ -46,7 +46,7 @@ public class AuthenticationPage {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView loadAuthenticationPage(HttpServletRequest request) {
-        final UserBean activeUser = Utils.getAuthenticatedUser(request);;
+        final UserBean activeUser = Utils.getAuthenticatedUser(request);
         // If the user is logged in redirect to the courses page.
         if (Objects.nonNull(activeUser)) {
             return new ModelAndView(Utils.redirect(Utils.WEBSITE_ROOT + GeneralCoursesPage.COURSES_VIEW_NAME));
