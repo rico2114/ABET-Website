@@ -114,6 +114,7 @@ public class UserBean {
      * @return  the course if exists, null if fails to find a course
      */
     public CourseBean getCourse(final String name, final String identifier) {
+        // todo: change this to a hash set for faster contains function
         for (CourseBean course : courses) {
             if (course.getName().equals(name) && course.getIdentifier().equals(identifier)) {
                 return course;
