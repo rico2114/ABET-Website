@@ -20,17 +20,17 @@ public class DatabaseUtils {
     /**
      * Represents the database name
      */
-    private static final String DATABASE_NAME = "ABET";
+    private static final String DATABASE_NAME = "abet";
 
     /**
      * Represents the username of the database
      */
-    private static final String USERNAME = "test";
+    private static final String USERNAME = "root";
 
     /**
      * Represents the password of the database
      */
-    private static final String PASSWORD = "test";
+    private static final String PASSWORD = "";
 
     /**
      * This class doesn't needs to be instantiated
@@ -78,7 +78,7 @@ public class DatabaseUtils {
         builder.append("CREATE TABLE IF NOT EXISTS ").append(tableName).append(" (");
 
         for (int i = 0; i < attributes.length; i ++) {
-            builder.append(attributes[i]).append(" ").append(attributeTypes[i]).append(", ");
+            builder.append(attributes[i]).append(" ").append(attributeTypes[i]).append(" NOT NULL ").append((i == (attributes.length - 1)) ? "" : ", ");
         }
 
         builder.append(")");
@@ -90,7 +90,7 @@ public class DatabaseUtils {
      */
     private static void createCourseDefinitionTable() throws SQLException {
         final String [] attributes = new String[] {
-                "IDENTIFIER", "NAME", "INSTRUMENT", "GROUP"
+                "IDENTIFIER", "NAME", "INSTRUMENT", "GROUP_IDENTIFIER"
         };
         final String [] attributeTypes = new String [] {
                 "CHAR(9)", "VARCHAR(40)", "CHAR(1)", "CHAR(1)"
@@ -110,6 +110,9 @@ public class DatabaseUtils {
      * @return  true if the update was done successfully, false otherwise
      */
     public static boolean executeUpdate(final String sql) {
+        if (sql.isEmpty())
+            return false;
+
         final Connection connection = getConnection();
         boolean satisfactory = false;
         try {
