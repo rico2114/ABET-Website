@@ -51,6 +51,9 @@ public class DatabaseUtils {
         createTables();
     }
 
+    /**
+     * This function takes care of the creation of the database tables if they haven't been created already.
+     */
     private static void createTables() {
         try {
             createCourseDefinitionTable();
