@@ -5,6 +5,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 /**
  * Created by Sebastían on 12/06/2017.
@@ -59,13 +60,13 @@ public class DatabaseUtils {
     }
 
     /**
-     * An utility for creating tables if only the table doesn't exists
+     * An utility for string generation for tables if only the table doesn't exists
      * @param tableName the table name
      * @param attributes    the attributes name
      * @param attributeTypes    the attribute types
      * @return  null if the attribute lengths dont match otherwise the string
      */
-    private static String createTable(final String tableName, final String [] attributes, final String attributeTypes[]) {
+    private static String generateTableString(final String tableName, final String [] attributes, final String attributeTypes[]) {
         if (attributes.length != attributeTypes.length) {
             return null;
         }
@@ -91,18 +92,46 @@ public class DatabaseUtils {
         final String [] attributeTypes = new String [] {
                 "CHAR(9)", "VARCHAR(40)", "CHAR(1)", "CHAR(1)"
         };
-        String tableCreation = createTable("COURSE", attributes, attributeTypes);
+        String tableCreation = generateTableString("COURSE", attributes, attributeTypes);
         final Connection connection = getConnection();
-        final Statement statement = connection.createStatement();
-        statement.executeUpdate(tableCreation);
-        connection.close();
+        if (Objects.isNull(connection)) {
+            return;
+        }
+        executeUpdate(tableCreation);
+    }
+
+    /**
+     * This function provides an easy way to execute simple statements onto the database
+     * avoiding all those tedious try catches, also notifies the pool that the connection is available
+     * @param sql   the sql
+     * @return  true if the update was done successfully, false otherwise
+     */
+    public static boolean executeUpdate(final String sql) {
+        final Connection connection = getConnection();
+        boolean satisfactory = false;
+        try {
+            final Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            satisfactory = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (Objects.nonNull(connection)) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return satisfactory;
     }
 
     /**
      * Attempts to retrieve an available connection from the pool
      * @return null if fails otherwise the connection
      */
-    public static Connection getConnection() {
+    private static Connection getConnection() {
         try {
             return sourcePool.getConnection();
         } catch (SQLException e) {
