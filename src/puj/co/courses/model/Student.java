@@ -2,6 +2,7 @@ package puj.co.courses.model;
 
 /**
  * Created by Sebastían on 12/06/2017.
+ * This class represents an student
  */
 public class Student {
 

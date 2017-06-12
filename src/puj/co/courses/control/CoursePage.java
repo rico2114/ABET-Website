@@ -70,6 +70,10 @@ public class CoursePage {
             course.addStudents(CoursesUtils.findStudentsForCourse(name, identifier));
         }
 
+        // Here i should call my mysql and ask for the 'indicadores' (A, J, K ...)
+        // if they dont exist, the user can't write any grades
+        // if they exist, the user can
+
         request.setAttribute(COURSE_NAME_KEY, name);
         request.setAttribute(COURSE_STUDENTS_KEY, course.getStudents());
         return new ModelAndView(COURSE_VIEW_NAME);
