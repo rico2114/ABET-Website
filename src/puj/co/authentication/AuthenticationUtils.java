@@ -10,7 +10,7 @@ import puj.co.authentication.model.UserPrivilege;
 public class AuthenticationUtils {
 
     /**
-     * This class can't be instantiated
+     * This class doesn't needs to be instantiated
      */
     private AuthenticationUtils() {
     }
