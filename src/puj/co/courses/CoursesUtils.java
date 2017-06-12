@@ -1,6 +1,7 @@
 package puj.co.courses;
 
 import puj.co.authentication.model.UserBean;
+import puj.co.authentication.model.UserPrivilege;
 import puj.co.courses.model.CourseBean;
 import puj.co.courses.model.Student;
 
@@ -28,9 +29,13 @@ public class CoursesUtils {
     public static final ArrayList<Student> findStudentsForCourse(final String name, final String identifier) {
         // todo: do this through the javeriana website
         final ArrayList<Student> temporal = new ArrayList<>();
-        temporal.add(new Student("Juan Sebastian Quiceno"));
-        temporal.add(new Student("Daniel Mamian"));
-        temporal.add(new Student("Deniel Murcia"));
+        if (identifier.equals("idx0")) {
+            temporal.add(new Student("Juan Sebastian Quiceno"));
+        } else if (identifier.equals("idx1")) {
+            temporal.add(new Student("Daniel Mamian"));
+        } else {
+            temporal.add(new Student("Daniel Murcia"));
+        }
         return temporal;
     }
 
@@ -39,9 +44,12 @@ public class CoursesUtils {
      * @param username  the user name
      * @return  the list of courses
      */
-    public static final ArrayList<CourseBean> findCoursesForUser(final String username) {
+    public static final ArrayList<CourseBean> findCoursesForUser(final String username, final UserPrivilege privilege) {
         // todo: do this through the javeriana website
         final ArrayList<CourseBean> temporal = new ArrayList<>();
+        if (privilege.equals(UserPrivilege.ADMINISTRATOR) || privilege.equals(UserPrivilege.MODERATOR)) {
+            temporal.add(new CourseBean("idx3", "El resto de cursos"));
+        }
         temporal.add(new CourseBean("idx0", "Arquitectura 1"));
         temporal.add(new CourseBean("idx1", "Logica"));
         temporal.add(new CourseBean("idx2", "Objetos"));
