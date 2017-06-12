@@ -19,14 +19,14 @@ public class UserBean {
     private String username;
 
     /**
-     * Represents the user {@link UserPrivilege privilege}
-     */
-    private UserPrivilege privilege;
-
-    /**
      * Represents the password
      */
     private String password;
+
+    /**
+     * Represents the user {@link UserPrivilege privilege}
+     */
+    private UserPrivilege privilege;
 
     /**
      * Represents all the courses taught by the user
@@ -108,6 +108,21 @@ public class UserBean {
         for (CourseBean c : _courses) {
             courses.add(c);
         }
+    }
+
+    /**
+     * Attempts to grab a course based on a name and identifier
+     * @param name  the name of the course
+     * @param identifier    the identifier
+     * @return  the course if exists, null if fails to find a course
+     */
+    public CourseBean getCourse(final String name, final String identifier) {
+        for (CourseBean course : courses) {
+            if (course.getName().equals(name) && course.getIdentifier().equals(identifier)) {
+                return course;
+            }
+        }
+        return null;
     }
 
     /**

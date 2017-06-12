@@ -1,5 +1,7 @@
 package puj.co.courses.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by Sebastían on 7/06/2017.
  * An immutable representation of a course
@@ -9,12 +11,17 @@ public class CourseBean {
     /**
      * Represents the course identifier
      */
-    public final String identifier;
+    private final String identifier;
 
     /**
      * Represents the course name
      */
-    public final String name;
+    private final String name;
+
+    /**
+     * Represents the list of the students
+     */
+    private final ArrayList<Student> students;
 
     /**
      * Constructs a course based on an identifier and name
@@ -24,6 +31,7 @@ public class CourseBean {
     public CourseBean(final String identifier, final String name) {
         this.identifier = identifier;
         this.name = name;
+        this.students = new ArrayList<>();
     }
 
     /**
@@ -40,6 +48,24 @@ public class CourseBean {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Caches the students to the local course
+     * @param _students the students to be added
+     */
+    public void addStudents(final ArrayList<Student> _students) {
+        for (int i = 0; i < _students.size(); i ++) {
+            students.add(_students.get(i));
+        }
+    }
+
+    /**
+     * Gets the students from the {@link CourseBean course}
+     * @return  the students
+     */
+    public ArrayList<Student> getStudents() {
+        return students;
     }
 
 }

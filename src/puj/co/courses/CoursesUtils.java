@@ -2,6 +2,7 @@ package puj.co.courses;
 
 import puj.co.authentication.model.UserBean;
 import puj.co.courses.model.CourseBean;
+import puj.co.courses.model.Student;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,36 +20,31 @@ public class CoursesUtils {
     }
 
     /**
-     * This method checks if the user contains a desired course
-     * @param user  the user
-     * @param identifier    the identifier of the course
-     * @param name  the name of the course
-     * @return  true if the user contains the course
+     * Grabs the {@link Student students} based on a course
+     * @param name    the course name
+     * @param identifier    the course identifier
+     * @return  an {@link ArrayList arraylist} with the students
      */
-    public static final boolean userContainsCourse(final UserBean user, final String identifier, final String name) {
-        // todo: has to be changed later to a hash structure for a faster lookup rather than O(n)
-        for (CourseBean course : user.getCourses()) {
-            if (course.getIdentifier().equals(identifier) && course.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
+    public static final ArrayList<Student> findStudentsForCourse(final String name, final String identifier) {
+        // todo: do this through the javeriana website
+        final ArrayList<Student> temporal = new ArrayList<>();
+        temporal.add(new Student("Juan Sebastian Quiceno"));
+        temporal.add(new Student("Daniel Mamian"));
+        temporal.add(new Student("Deniel Murcia"));
+        return temporal;
     }
 
     /**
      * Grabs a {@link List list} of courses based on an user
-     * @param user  the user
+     * @param username  the user name
      * @return  the list of courses
      */
-    public static final ArrayList<CourseBean> findCoursesForUser(final UserBean user) {
+    public static final ArrayList<CourseBean> findCoursesForUser(final String username) {
         // todo: do this through the javeriana website
         final ArrayList<CourseBean> temporal = new ArrayList<>();
-        CourseBean courseBean1 = new CourseBean("idx0", "arqui_1");
-        CourseBean courseBean2 = new CourseBean("idx1", "logic");
-        CourseBean courseBean3 = new CourseBean("idx2", "objetos");
-        temporal.add(courseBean1);
-        temporal.add(courseBean2);
-        temporal.add(courseBean3);
+        temporal.add(new CourseBean("idx0", "Arquitectura 1"));
+        temporal.add(new CourseBean("idx1", "Logica"));
+        temporal.add(new CourseBean("idx2", "Objetos"));
         return temporal;
     }
 }

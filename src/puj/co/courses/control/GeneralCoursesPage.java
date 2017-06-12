@@ -56,14 +56,13 @@ public class GeneralCoursesPage {
         final UserBean activeUser = Utils.getAuthenticatedUser(request);
 
         // Grab the courses and cache them for the user
-        ArrayList<CourseBean> courses = activeUser.getCourses();
-        if (courses.isEmpty()) {
-            activeUser.addCourses(courses = CoursesUtils.findCoursesForUser(activeUser));
+        if (activeUser.getCourses().isEmpty()) {
+            activeUser.addCourses(CoursesUtils.findCoursesForUser(activeUser.getUsername()));
         }
 
         // Display the user courses
         request.setAttribute(JSP_USERNAME_KEY, activeUser.getUsername());
-        request.setAttribute(JSP_COURSES_KEY, courses);
+        request.setAttribute(JSP_COURSES_KEY, activeUser.getCourses());
 
         return new ModelAndView(COURSES_VIEW_NAME);
     }
