@@ -48,11 +48,11 @@ public class CoursesUtils {
         // todo: do this through the javeriana website
         final ArrayList<CourseBean> temporal = new ArrayList<>();
         if (privilege.equals(UserPrivilege.ADMINISTRATOR) || privilege.equals(UserPrivilege.MODERATOR)) {
-            temporal.add(new CourseBean("idx3", "El resto de cursos"));
+            temporal.add(new CourseBean("idx3", "El resto de cursos", "A"));
         }
-        temporal.add(new CourseBean("idx0", "Arquitectura 1"));
-        temporal.add(new CourseBean("idx1", "Logica"));
-        temporal.add(new CourseBean("idx2", "Objetos"));
+        temporal.add(new CourseBean("idx0", "Arquitectura 1", "A"));
+        temporal.add(new CourseBean("idx1", "Logica", "A"));
+        temporal.add(new CourseBean("idx2", "Objetos", "B"));
         return temporal;
     }
 }

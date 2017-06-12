@@ -57,7 +57,7 @@ public class GeneralCoursesPage {
 
         // Grab the courses and cache them for the user
         if (activeUser.getCourses().isEmpty()) {
-            activeUser.addCourses(CoursesUtils.findCoursesForUser(activeUser.getUsername()));
+            activeUser.addCourses(CoursesUtils.findCoursesForUser(activeUser.getUsername(), activeUser.getPrivilege()));
         }
 
         // Display the user courses

@@ -19,6 +19,11 @@ public class CourseBean {
     private final String name;
 
     /**
+     * Represents the group of the course (is it group A or B or ...)
+     */
+    private final String group;
+
+    /**
      * Represents A CACHED VERSION OF the list of students
      */
     private final ArrayList<Student> students;
@@ -27,10 +32,12 @@ public class CourseBean {
      * Constructs a course based on an identifier and name
      * @param identifier    the identifier of the course
      * @param name  the name of the course
+     * @param group the group of the course
      */
-    public CourseBean(final String identifier, final String name) {
+    public CourseBean(final String identifier, final String name, final String group) {
         this.identifier = identifier;
         this.name = name;
+        this.group = group;
         this.students = new ArrayList<>();
     }
 
@@ -48,6 +55,14 @@ public class CourseBean {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Gets the group of the course
+     * @return  the group
+     */
+    public String getGroup() {
+        return group;
     }
 
     /**
