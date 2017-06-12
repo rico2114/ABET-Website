@@ -96,10 +96,6 @@ public class DatabaseUtils {
                 "CHAR(9)", "VARCHAR(40)", "CHAR(1)", "CHAR(1)"
         };
         String tableCreation = generateTableString("COURSE", attributes, attributeTypes);
-        final Connection connection = getConnection();
-        if (Objects.isNull(connection)) {
-            return;
-        }
         executeUpdate(tableCreation);
     }
 

@@ -83,6 +83,8 @@ public class CoursePage {
         request.setAttribute(COURSE_NAME_KEY, name);
         request.setAttribute(COURSE_STUDENTS_KEY, course.getStudents());
         request.setAttribute(COURSE_GROUP_KEY, course.getGroup());
+
+        // todo: this was only placed here to see if the database was created. need to remove this line
         DatabaseUtils.executeUpdate("");
         return new ModelAndView(COURSE_VIEW_NAME);
     }
