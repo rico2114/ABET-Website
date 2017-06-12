@@ -15,7 +15,7 @@ import java.util.List;
 public class CoursesUtils {
 
     /**
-     * This class dosn't needs to be instantiated
+     * This class doesn't needs to be instantiated
      */
     private CoursesUtils() {
     }
@@ -24,7 +24,7 @@ public class CoursesUtils {
      * Grabs the {@link Student students} based on a course
      * @param name    the course name
      * @param identifier    the course identifier
-     * @return  an {@link ArrayList arraylist} with the students
+     * @return  an {@link ArrayList array-list} with the students
      */
     public static final ArrayList<Student> findStudentsForCourse(final String name, final String identifier) {
         // todo: do this through the javeriana website
