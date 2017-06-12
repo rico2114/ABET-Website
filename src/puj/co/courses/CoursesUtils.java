@@ -8,6 +8,7 @@ import puj.co.courses.model.Student;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Sebastían on 7/06/2017.
@@ -50,6 +51,7 @@ public class CoursesUtils {
         if (privilege.equals(UserPrivilege.ADMINISTRATOR) || privilege.equals(UserPrivilege.MODERATOR)) {
             temporal.add(new CourseBean("idx3", "El resto de cursos", "A"));
         }
+
         temporal.add(new CourseBean("idx0", "Arquitectura 1", "A"));
         temporal.add(new CourseBean("idx1", "Logica", "A"));
         temporal.add(new CourseBean("idx2", "Objetos", "B"));

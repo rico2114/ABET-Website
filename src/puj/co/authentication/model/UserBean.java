@@ -46,8 +46,8 @@ public class UserBean {
      */
     public UserBean(final String username, final String password, final UserPrivilege privilege) {
         this.username = username;
-        this.privilege = privilege;
         this.password = password;
+        this.privilege = privilege;
         this.courses = new ArrayList<>();
     }
 

@@ -8,6 +8,7 @@ import puj.co.authentication.model.UserBean;
 import puj.co.courses.CoursesUtils;
 import puj.co.courses.model.CourseBean;
 import puj.co.courses.model.Student;
+import puj.co.mysql.DatabaseUtils;
 import puj.co.utils.Utils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,11 @@ public class CoursePage {
      * Represents the course students key
      */
     private static final String COURSE_STUDENTS_KEY = "students";
+
+    /**
+     * Represents the course group key
+     */
+    private static final String COURSE_GROUP_KEY = "group";
 
     /**
      * Attempts to load the course page based on the parameters
@@ -76,6 +82,8 @@ public class CoursePage {
 
         request.setAttribute(COURSE_NAME_KEY, name);
         request.setAttribute(COURSE_STUDENTS_KEY, course.getStudents());
+        request.setAttribute(COURSE_GROUP_KEY, course.getGroup());
+        DatabaseUtils.executeUpdate("");
         return new ModelAndView(COURSE_VIEW_NAME);
     }
 }

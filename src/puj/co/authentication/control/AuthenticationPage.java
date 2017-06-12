@@ -67,7 +67,7 @@ public class AuthenticationPage {
 
         // We could authenticate
         if (Objects.nonNull(authenticationResult)) {
-            request.getSession().setAttribute(Utils.ACTIVE_USER_KEY, userBean);
+            request.getSession().setAttribute(Utils.ACTIVE_USER_KEY, authenticationResult);
             componentResponse = new ModelAndView(Utils.redirect(Utils.WEBSITE_ROOT + GeneralCoursesPage.COURSES_VIEW_NAME));
         } else {
             // Failed authenticating
