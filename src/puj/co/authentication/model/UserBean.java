@@ -3,8 +3,6 @@ package puj.co.authentication.model;
 import puj.co.courses.model.CourseBean;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -29,7 +27,7 @@ public class UserBean {
     private UserPrivilege privilege;
 
     /**
-     * Represents all the courses taught by the user
+     * Represents A CACHED VERSION OF all the courses taught by the user
      */
     private final ArrayList<CourseBean> courses;
 
@@ -43,9 +41,10 @@ public class UserBean {
     /**
      * Constructs the user bean based on the username and privilege
      * @param username  the username of the user
+     * @param password  the password of the user
      * @param privilege the {@link UserPrivilege privilege} of the user
      */
-    public UserBean(final String username, final UserPrivilege privilege, final String password) {
+    public UserBean(final String username, final String password, final UserPrivilege privilege) {
         this.username = username;
         this.privilege = privilege;
         this.password = password;
@@ -105,9 +104,7 @@ public class UserBean {
      * @param _courses  the list of courses to add
      */
     public void addCourses(final List<CourseBean> _courses) {
-        for (CourseBean c : _courses) {
-            courses.add(c);
-        }
+        courses.addAll(_courses);
     }
 
     /**

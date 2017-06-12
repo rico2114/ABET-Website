@@ -19,7 +19,7 @@ public class CourseBean {
     private final String name;
 
     /**
-     * Represents the list of the students
+     * Represents A CACHED VERSION OF the list of students
      */
     private final ArrayList<Student> students;
 
@@ -55,9 +55,7 @@ public class CourseBean {
      * @param _students the students to be added
      */
     public void addStudents(final ArrayList<Student> _students) {
-        for (int i = 0; i < _students.size(); i ++) {
-            students.add(_students.get(i));
-        }
+        students.addAll(_students);
     }
 
     /**

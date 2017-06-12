@@ -27,6 +27,6 @@ public class AuthenticationUtils {
         if (false) {
             return null;
         }
-        return new UserBean(username, UserPrivilege.ADMINISTRATOR, password);
+        return new UserBean(username, password, UserPrivilege.ADMINISTRATOR);
     }
 }
