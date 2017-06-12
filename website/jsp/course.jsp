@@ -13,7 +13,7 @@
     <title>Curso ${name} </title>
 </head>
 <body>
-    <h2> Bienvenido al curso: ${name}</h2>
+    <h2> Bienvenido al curso: ${name}  grupo: ${group} </h2>
     <br>
 
     <core:forEach items="${students}" var="student">
